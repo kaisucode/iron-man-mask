@@ -1,26 +1,12 @@
 
-import asyncio
-import socketio
+#  import asyncio
+#  import socketio
 import speech_recognition as sr
-from gtts import gTTS
+#  from gtts import gTTS
 import os
-#  import pyautogui as pgy
-#  import subprocess
+import requests
 
-sio = socketio.AsyncClient()
-
-@sio.event
-async def connect():
-    print('connection established')
-
-@sio.event
-async def pi_do(data):
-    print('message received with ', data)
-
-@sio.event
-async def disconnect():
-    print('disconnected from server')
-
+URL = "http://0.0.0.0:5000/"
 
 def sayCommand(newCommand): 
     print(newCommand)
@@ -32,7 +18,9 @@ def sayCommand(newCommand):
 #      sayCommand("Searching for, "+command)
 #      os.system("google-chrome --new-window "+"\"http://www.google.com/search?q="+command+"\"")
 
-async def listenForCommand(): 
+
+
+while(1): 
     print("listening")
     try:
         r = sr.Recognizer()
@@ -44,8 +32,10 @@ async def listenForCommand():
         temp = command.split(" ")
         print(temp)
 
-        if (command.lower() == "on"): 
-            sio.emit("send_message", {"data": "on"})
+        if (command.lower() == "open mask"): 
+            #  sio.emit("send_message", {"data": "on"})
+            res = requests.post(URL + "voice_command", json={'message': "open mask" })
+
 
         #  if temp[0].lower() == "google": 
         #      googleSearch(command[6:])
@@ -53,17 +43,4 @@ async def listenForCommand():
         #      setCurrentProject()
     except Exception as e:
         print(e)
-
-
-
-async def main():
-    await sio.connect('http://localhost:5000')
-    await sio.wait()
-    await listenForCommand()
-
-
-if __name__ == '__main__':
-    asyncio.run(main())
-#  sio.connect("localhost://localhost:5000")
-#  sio.wait()
 

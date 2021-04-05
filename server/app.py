@@ -1,15 +1,44 @@
 
-import socketio
-import eventlet
+from flask import Flask, request, jsonify
+from flask_cors import CORS, cross_origin
+from flask_socketio import SocketIO, emit
 
-sio = socketio.Server()
-app = socketio.WSGIApp(sio)
+import json
+#  import requests
+#  import os
+#  import uuid
 
-@sio.on('send_message')
-def send_message(sid, res): 
-    print("received and sending: " + res.data)
-    sio.emit('pi_do', { 'message': res.data })
+PORT = 5000
+app = Flask(__name__)
 
-if __name__ == '__main__':
-    eventlet.wsgi.server(eventlet.listen(('', 5000)), app)
+cors = CORS(app)
+socketio = SocketIO(app, cors_allowed_origins="*")
+app.config['CORS_HEADERS'] = 'Content-Type'
+
+@app.route('/voice_command', methods=["POST"])
+def updateBio(): 
+    message = request.json["message"]
+    print("received message: " + message + " and forwarding to the pi")
+    socketio.emit('pi_do', { 'message': message })
+    return jsonify({"status": "success"}), 200
+
+
+@socketio.on('connect', namespace="/websockets")
+def connect(): 
+    print("a user connected")
+
+@socketio.on('disconnect')
+def disconnect():
+    print(request.namespace.socket.sessid + " disconnected")
+
+@socketio.on('send_message', namespace="/websockets")
+def send_message(data): 
+    message = data["message"]
+    print("received and sending: " + message)
+    socketio.emit('pi_do', { 'message': message })
+
+
+if __name__ == "__main__":
+    socketio.run(app, host="0.0.0.0", port=PORT, debug=True)
+
 
