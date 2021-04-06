@@ -7,7 +7,6 @@ URL = 'http://doranelle.kevinhsu.net:5000/websockets'
 sio = socketio.Client()
 
 isOn = False
-servo1 = null
 
 GPIO.setmode(GPIO.BOARD)
 # Set pin 11 as an output, and set servo1 as pin 11 as PWM
