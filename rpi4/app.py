@@ -32,7 +32,7 @@ def pi_do(data):
         servo1.ChangeDutyCycle(0)
     else: 
         servo1.ChangeDutyCycle(7)
-    isOn = !isOn
+    isOn = not isOn
 
 
 setup()
