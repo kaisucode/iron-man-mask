@@ -29,9 +29,9 @@ def pi_do(data):
     print('I received a message!')
     print("raspberry pi received message, do: " + data["message"])
     if isOn: 
-        servo1.ChangeDutyCycle(7)
-    else: 
         servo1.ChangeDutyCycle(0)
+    else: 
+        servo1.ChangeDutyCycle(7)
     isOn = !isOn
 
 
