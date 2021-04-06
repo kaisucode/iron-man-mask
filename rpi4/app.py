@@ -6,6 +6,8 @@ import time
 URL = 'http://doranelle.kevinhsu.net:5000/websockets'
 sio = socketio.Client()
 
+isOn = False
+
 def setup(): 
     GPIO.setmode(GPIO.BOARD)
     # Set pin 11 as an output, and set servo1 as pin 11 as PWM
@@ -22,10 +24,9 @@ def connect():
 def disconnect():
     print("I'm disconnected!")
 
-isOn = False
-
 @sio.on('pi_do')
 def pi_do(data):
+    global isOn
     print('I received a message!')
     print("raspberry pi received message, do: " + data["message"])
     if isOn: 
