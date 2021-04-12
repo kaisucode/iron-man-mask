@@ -35,6 +35,9 @@ while(1):
         if (command.lower() == "open mask"): 
             #  sio.emit("send_message", {"data": "on"})
             res = requests.post(URL + "voice_command", json={'message': "open mask" })
+        elif (command.lower() == "close mask"): 
+            #  sio.emit("send_message", {"data": "on"})
+            res = requests.post(URL + "voice_command", json={'message': "close mask" })
 
 
         #  if temp[0].lower() == "google": 
