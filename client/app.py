@@ -35,7 +35,7 @@ while(1):
         if (command.lower() == "open mask"): 
             #  sio.emit("send_message", {"data": "on"})
             res = requests.post(URL + "voice_command", json={'message': "open mask" })
-        elif (command.lower() == "shut down"): 
+        elif (command.lower() == "down"): 
             #  sio.emit("send_message", {"data": "on"})
             res = requests.post(URL + "voice_command", json={'message': "close mask" })
 
