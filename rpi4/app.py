@@ -32,7 +32,7 @@ def setAngle(angle):
     duty = angle / 18 + 3
 
     servo1.ChangeDutyCycle(duty)
-    time.sleep(3)
+    time.sleep(1)
     servo1.ChangeDutyCycle(0)
 
     #  GPIO.output(11, True)
