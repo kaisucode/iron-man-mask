@@ -28,12 +28,13 @@ def disconnect():
 
 def setAngle(angle):
     global gpio
+    global servo1
     duty = angle / 18 + 3
     GPIO.output(11, True)
-    pwm.ChangeDutyCycle(duty)
+    servo1.ChangeDutyCycle(duty)
     sleep(1)
     GPIO.output(11, False)
-    pwm.ChangeDutyCycle(duty)
+    servo1.ChangeDutyCycle(duty)
 
 @sio.on('pi_do')
 def pi_do(data):
