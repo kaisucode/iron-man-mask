@@ -29,14 +29,19 @@ while(1):
 
         command = r.recognize_google(audio)
         print("Original command: "+command)
-        temp = command.split(" ")
-        print(temp)
+        #  temp = command.split(" ")
+        #  print(temp)
 
-        if (command.lower() == "open mask"): 
+        processedCommand = command.lower()
+        print("processedCommand: " + processedCommand)
+
+        if (processedCommand == "open mask"): 
             #  sio.emit("send_message", {"data": "on"})
+            print("sending message 'open mask' to server")
             res = requests.post(URL + "voice_command", json={'message': "open mask" })
-        elif (command.lower() == "down"): 
+        elif (processedCommand == "down"): 
             #  sio.emit("send_message", {"data": "on"})
+            print("sending message 'down' to server")
             res = requests.post(URL + "voice_command", json={'message': "close mask" })
 
 
