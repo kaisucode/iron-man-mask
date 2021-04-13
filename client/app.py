@@ -6,7 +6,8 @@ import speech_recognition as sr
 import os
 import requests
 
-URL = "http://0.0.0.0:5000/"
+#  URL = "http://0.0.0.0:5000/"
+URL = 'http://doranelle.kevinhsu.net:5000/'
 
 def sayCommand(newCommand): 
     print(newCommand)
