@@ -26,6 +26,15 @@ def connect():
 def disconnect():
     print("I'm disconnected!")
 
+def setAngle(angle):
+    global gpio
+    duty = angle / 18 + 3
+    GPIO.output(11, True)
+    pwm.ChangeDutyCycle(duty)
+    sleep(1)
+    GPIO.output(11, False)
+    pwm.ChangeDutyCycle(duty)
+
 @sio.on('pi_do')
 def pi_do(data):
     #  global isOn
@@ -34,21 +43,24 @@ def pi_do(data):
     print('I received a message!')
     print("raspberry pi received message, do: " + data["message"])
     if data["message"] == "open mask": 
-        servo1.ChangeDutyCycle(7)
-        servo2.ChangeDutyCycle(7)
-        time.sleep(3)
-        servo1.ChangeDutyCycle(0)
-        servo2.ChangeDutyCycle(0)
+        setAngle(180)
+        #  servo1.ChangeDutyCycle(7)
+        #  servo2.ChangeDutyCycle(7)
+        #  time.sleep(3)
+        #  servo1.ChangeDutyCycle(0)
+        #  servo2.ChangeDutyCycle(0)
     elif data["message"] == "close mask": 
-        servo1.ChangeDutyCycle(-7)
-        servo2.ChangeDutyCycle(-7)
-        time.sleep(3)
-        servo1.ChangeDutyCycle(0)
-        servo2.ChangeDutyCycle(0)
+        setAngle(0)
+        #  servo1.ChangeDutyCycle(-7)
+        #  servo2.ChangeDutyCycle(-7)
+        #  time.sleep(3)
+        #  servo1.ChangeDutyCycle(0)
+        #  servo2.ChangeDutyCycle(0)
     #  isOn = not isOn
 
 
 #  setup()
+setAngle(0)
 sio.connect(URL)
 sio.wait()
 
