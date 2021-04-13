@@ -30,11 +30,16 @@ def setAngle(angle):
     global gpio
     global servo1
     duty = angle / 18 + 3
-    GPIO.output(11, True)
+
     servo1.ChangeDutyCycle(duty)
-    time.sleep(1)
-    GPIO.output(11, False)
-    servo1.ChangeDutyCycle(duty)
+    time.sleep(3)
+    servo1.ChangeDutyCycle(0)
+
+    #  GPIO.output(11, True)
+    #  servo1.ChangeDutyCycle(duty)
+    #  time.sleep(1)
+    #  GPIO.output(11, False)
+    #  servo1.ChangeDutyCycle(duty)
 
 @sio.on('pi_do')
 def pi_do(data):
