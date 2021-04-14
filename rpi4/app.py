@@ -71,7 +71,7 @@ def pi_do(data):
 
 
 #  setup()
-setAngle(0)
+#  setAngle(0)
 sio.connect(URL)
 sio.wait()
 
