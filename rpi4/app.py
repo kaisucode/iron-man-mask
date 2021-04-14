@@ -32,7 +32,7 @@ def setAngle(angle, timeInterval):
     duty = angle / 18 + 3
 
     servo1.ChangeDutyCycle(duty)
-    time.sleep(0.15)
+    time.sleep(timeInterval)
     servo1.ChangeDutyCycle(0)
 
     #  GPIO.output(11, True)
@@ -51,7 +51,7 @@ def pi_do(data):
     if data["message"] == "open mask": 
         # mask up
         print("mask up")
-        setAngle(0, 0.26)
+        setAngle(0, 0.24)
 
         #  servo1.ChangeDutyCycle(7)
         #  servo2.ChangeDutyCycle(7)
