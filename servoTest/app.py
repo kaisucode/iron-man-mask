@@ -7,7 +7,7 @@ def setAngle(angle):
     duty = angle / 18 + 3
 
     servo1.ChangeDutyCycle(duty)
-    time.sleep(1)
+    time.sleep(0.2)
     servo1.ChangeDutyCycle(0)
 
 
