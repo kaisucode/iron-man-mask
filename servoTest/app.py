@@ -8,7 +8,8 @@ def setAngle(angle):
 
     print("duty: " + str(duty))
     servo1.ChangeDutyCycle(duty)
-    time.sleep(0.15)
+    time.sleep(0.8) # save value
+    #  time.sleep(0.15) # save value
     servo1.ChangeDutyCycle(0)
 
 
