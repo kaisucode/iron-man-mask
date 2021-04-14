@@ -7,7 +7,7 @@ def setAngle(angle):
     duty = angle / 18 + 3
 
     servo1.ChangeDutyCycle(duty)
-    time.sleep(0.2)
+    time.sleep(0.15)
     servo1.ChangeDutyCycle(0)
 
 
@@ -20,7 +20,7 @@ print("intialized at down position, starting rotation in 3 seconds")
 
 time.sleep(3)
 print("test move up")
-setAngle(90)
+setAngle(10)
 
 
 print("moving down in 3 seconds")
