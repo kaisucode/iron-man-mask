@@ -26,7 +26,7 @@ def connect():
 def disconnect():
     print("I'm disconnected!")
 
-def setAngle(angle):
+def setAngle(angle, timeInterval):
     global gpio
     global servo1
     duty = angle / 18 + 3
@@ -50,7 +50,8 @@ def pi_do(data):
     print("raspberry pi received message, do: " + data["message"])
     if data["message"] == "open mask": 
         # mask up
-        setAngle(0)
+        print("mask up")
+        setAngle(0, 0.24)
 
         #  servo1.ChangeDutyCycle(7)
         #  servo2.ChangeDutyCycle(7)
@@ -59,7 +60,8 @@ def pi_do(data):
         #  servo2.ChangeDutyCycle(0)
     elif data["message"] == "close mask": 
         # mask down
-        setAngle(90)
+        print("mask down")
+        setAngle(90, 0.8)
         #  servo1.ChangeDutyCycle(-7)
         #  servo2.ChangeDutyCycle(-7)
         #  time.sleep(3)
