@@ -6,7 +6,7 @@ def setAngle(angle):
     global servo1
     duty = angle / 18 + 3
 
-    print("duty: " + duty)
+    print("duty: " + str(duty))
     servo1.ChangeDutyCycle(duty)
     time.sleep(0.15)
     servo1.ChangeDutyCycle(0)
