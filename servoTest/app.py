@@ -16,11 +16,11 @@ GPIO.setup(11,GPIO.OUT)
 servo1 = GPIO.PWM(11, 50)
 servo1.start(0) # start duty cycle at zero
 
-print("intialized at down position, starting rotation in 3 seconds")
+print("intialized at down position, starting rotation in 1 seconds")
 
-time.sleep(3)
+time.sleep(1)
 print("test move up")
-setAngle(10)
+setAngle(90)
 
 
 print("moving down in 3 seconds")
