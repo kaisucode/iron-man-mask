@@ -51,7 +51,7 @@ def pi_do(data):
     if data["message"] == "open mask": 
         # mask up
         print("mask up")
-        setAngle(0, 0.24)
+        setAngle(0, 0.26)
 
         #  servo1.ChangeDutyCycle(7)
         #  servo2.ChangeDutyCycle(7)
@@ -61,7 +61,7 @@ def pi_do(data):
     elif data["message"] == "close mask": 
         # mask down
         print("mask down")
-        setAngle(90, 0.8)
+        setAngle(90, 0.08)
         #  servo1.ChangeDutyCycle(-7)
         #  servo2.ChangeDutyCycle(-7)
         #  time.sleep(3)

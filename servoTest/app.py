@@ -23,7 +23,7 @@ print("intialized at down position, starting rotation in 1 seconds")
 
 time.sleep(3)
 print("test move down")
-setAngle(90, 0.8)
+setAngle(90, 0.08)
 
 
 print("moving down in 3 seconds")
